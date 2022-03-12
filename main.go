@@ -20,14 +20,14 @@ import (
 )
 
 // dtqData encapsulates the data we parse out of the dnstap file. Any custom
-// fields outside the main Dnstap and DNSMsg fields are there for easy
+// fields outside the main Dnstap and Msg fields are there for easy
 // reference where data might only be available in a numeric format while it is
 // easier to search for the type string "A" or "MX" rather than the equivalent
 // numerical value. We do not want to duplicate fields already present
 // somewhere else.
 type dtqData struct {
 	Dnstap                *dnstap.Dnstap `json:",omitempty"`
-	DNSMsg                *dns.Msg       `json:",omitempty"`
+	Msg                   *dns.Msg       `json:",omitempty"`
 	DnstapTypeString      string         `json:",omitempty"`
 	MessageTypeString     string         `json:",omitempty"`
 	SocketFamilyString    string         `json:",omitempty"`
@@ -132,7 +132,7 @@ func main() {
 		}
 
 		dd.Dnstap = &dt
-		dd.DNSMsg = msg
+		dd.Msg = msg
 
 		if msg != nil {
 			var dnsQuestionClassString string

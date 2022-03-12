@@ -7,7 +7,7 @@ matching data printed in a JSON format.
 This allows you to for example filter on a combination of question name and
 specific DNS message ID like so:
 ```
-$ dtq -file dnstap.file -filter '"/DNSMsg/Question/0/Name" == "www.domain.example." and "/DNSMsg/MsgHdr/Id" == 1337'
+$ dtq -file file.dnstap -filter '"/Msg/Question/0/Name" == "www.domain.example." and "/Msg/MsgHdr/Id" == 1337'
 {
   "Dnstap": {
     "type": 1,
@@ -17,7 +17,7 @@ $ dtq -file dnstap.file -filter '"/DNSMsg/Question/0/Name" == "www.domain.exampl
        [...]
     }
   },
-  "DNSMsg": {
+  "Msg": {
     "Id": 1337,
     "Response": true,
     "Opcode": 0,
